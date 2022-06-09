@@ -7,19 +7,21 @@ import zmq
 from faker import Faker
 from faker.providers import BaseProvider
 
+from logger_manager import get_logger
+
 random.seed = 0
 Faker.seed = 0
-logging.basicConfig()
-_logger = logging.getLogger('test')
-_logger.setLevel(logging.DEBUG)
+_logger = get_logger("test")
 
 
 class ModuleProvider(BaseProvider):
 
-    def module_name(self): return random.choice(['evse', 'ocpp',
-                                                 'slac'])
+    @staticmethod
+    def module_name():
+        return random.choice(['evse', 'ocpp', 'slac'])
 
-    def module_state(self):
+    @staticmethod
+    def module_state():
         """
         Random states are not really reasonable, but this is just for testing
         """
@@ -27,12 +29,12 @@ class ModuleProvider(BaseProvider):
         return random.choice(
             ['initializing', 'idle', 'charging', 'finalizing'])
 
-    def module_output(self):  # Make stdout have 2/3 probability.
-
+    @staticmethod
+    def module_output():
         stream = random.choice(['stdout', 'stdout', 'stderr'])
 
         message = 'Something happened.'
-        return (stream, message)
+        return stream, message
 
 
 class PostFakeLogs:
@@ -55,10 +57,11 @@ class PostFakeLogs:
                        }
                 _logger.debug(msg)
                 socket.send_json(msg)
-                sleep(random.uniform(0, 0.5))
+                sleep(1)
         except KeyboardInterrupt:
             print("Program has finished")
 
 
-pfl = PostFakeLogs()
-pfl.process()
+if __name__ == '__main__':
+    pfl = PostFakeLogs()
+    pfl.process()
