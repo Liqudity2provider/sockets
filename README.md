@@ -6,7 +6,7 @@ There are 3 file that you can run:
 ![image](https://user-images.githubusercontent.com/56783638/173069236-a8f82487-c080-4109-ae58-adf8cdc7a984.png)
 
 
-2. monitor.py - monitors and receives messages from socket connection. Logging if only stdrerr
+2. monitor.py - monitors and receives messages from socket connection. Logging if only stderr
 
 
 ![image](https://user-images.githubusercontent.com/56783638/173069384-a3246485-8773-407b-95e5-46b4b5c7af93.png)
