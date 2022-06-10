@@ -16,7 +16,7 @@ There are 3 file that you can run:
 
 ![image](https://user-images.githubusercontent.com/56783638/173069461-10993341-1ddd-4054-ac57-0cbf21921fea.png)
 
-There also some modules:
+There're also some modules:
 
 - db_manager.py - Provides simple api for DB (as file)
 - logger_manager.py - creates specific logger for every module
