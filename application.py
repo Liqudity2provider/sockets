@@ -1,4 +1,3 @@
-import logging  # pip install pyzmq
 import random
 from datetime import datetime
 from time import sleep
@@ -14,7 +13,7 @@ Faker.seed = 0
 _logger = get_logger("test")
 
 
-class ModuleProvider(BaseProvider):
+class FakeModule(BaseProvider):
 
     @staticmethod
     def module_name():
@@ -40,7 +39,7 @@ class ModuleProvider(BaseProvider):
 class PostFakeLogs:
     def __init__(self):
         self.fake = Faker()
-        self.fake.add_provider(ModuleProvider)
+        self.fake.add_provider(FakeModule)
 
     def process(self):
         context = zmq.Context()
